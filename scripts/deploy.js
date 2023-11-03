@@ -1,27 +1,23 @@
 // scripts/deploy.js
 
-const hre = require("hardhat");
-const { default: NFTree } = require("../client/src/NFTree");
+  const { ethers, upgrades } = require("hardhat");
 
-async function main() {
-  const [deployer] = await hre.ethers.getSigners();
+  async function main() {
+     const gas = await ethers.provider.getGasPrice()
+     const TreeNFT = await hre.ethers.getContractFactory("NFTree");
+     console.log("Deploying NFTree contract...");
+  
+     const treeNFT = await upgrades.deployProxy(TreeNFT,  {
+        gasPrice: gas, 
+        initializer: "initialize",
+     });
+     await treeNFT.deployed();
+     console.log("NFTree contract deployed to:", treeNFT.address);
+  }
+  
+  main().catch((error) => {
+     console.error(error);
+     process.exitCode = 1;
 
-  console.log(
-    "Deploying contracts with the account:",
-    deployer.address
-  );
-
-  const TreeNFT = await hre.ethers.getContractFactory("NFTree");
-  const treeNFT = await NFTree.deploy();
-
-  await treeNFT.deployed();
-
-  console.log("TreeNFT contract deployed to:", treeNFT.address);
-}
-
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
   });
+ 

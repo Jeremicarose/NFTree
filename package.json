@@ -1,10 +1,38 @@
 {
-  "name": "hardhat-project",
+  "name": "nft-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "hardhat compile",
+    "devDeploy": "hardhat --network alfajores deploy",
+    "devVerify": "hardhat --network alfajores sourcify",
+    "prodVerify": "hardhat --network celo sourcify",
+    "test": "hardhat test"
+  },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.7",
     "hardhat": "^2.18.3"
   },
   "dependencies": {
-    "@openzeppelin/contracts-upgradeable": "^5.0.0"
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-truffle5": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "@openzeppelin/contracts-upgradeable": "^5.0.0",
+    "@openzeppelin/hardhat-upgrades": "^1.27.0",
+    "@types/sinon-chai": "^3.2.3",
+    "chai": "^4.3.7",
+    "dotenv": "^16.0.3",
+    "ethereum-waffle": "^3.0.0",
+    "ethers": "^5.7.2",
+    "etherscan-api": "^10.3.0",
+    "hardhat-deploy": "^0.11.34",
+    "hardhat-gas-reporter": "^1.0.4",
+    "solhint": "^3.3.6"
   }
 }
