@@ -35,10 +35,9 @@ contract NFTree is
     );
 
     function initialize() public initializer {
-    __ERC721_init("TreeNFT", "TNFT");
-    __Ownable_init_unchained(msg.sender);
-    } 
-
+        __ERC721_init("TreeNFT", "TNFT");
+        __Ownable_init_unchained(msg.sender);
+    }
 
     function _setTreeInfo(uint256 tokenId, Tree memory tree) internal {
         _treeInfo[tokenId] = tree;
@@ -77,9 +76,5 @@ contract NFTree is
         return _totalSupply;
     }
 
-    function burn(uint256 tokenId) public onlyOwner {
-    _burn(tokenId);
-    _totalSupply -= 1;
-    }
-
+    
 }
